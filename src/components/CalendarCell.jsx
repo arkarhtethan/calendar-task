@@ -16,8 +16,7 @@ const CalendarCell = ({ day }) => {
         setNotes(notes);
       }
     }
-  }, []);
-  console.log(className);
+  }, [data, day]);
   return (
     <div className={className.join(" ")}>
       <p>{day?.format("D")}</p>
