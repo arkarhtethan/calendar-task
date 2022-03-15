@@ -58,6 +58,13 @@
     }
     &--left {
       display: flex;
+      align-items: center;
+      & > p {
+        margin: 0px 20px;
+      }
+      & > :not(p) {
+        cursor: pointer;
+      }
     }
   }
   &__main {
