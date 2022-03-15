@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import moment from "moment";
 
 export const CalendarContext = createContext();
 
@@ -15,8 +16,39 @@ const CalendarContextProvider = ({ children }) => {
     "30/3/2022": { classes: "bg-white" },
     "29/3/2022": { classes: "bg-white" },
   });
+  const [calendar, setCalendar] = useState([]);
+  const [value, setValue] = useState(moment());
+
+  const startDay = value.clone().startOf("month").startOf("week");
+  const endDay = value.clone().endOf("month").endOf("week");
+  const day = startDay.clone().subtract(1, "day");
+
+  useEffect(() => {
+    setUpCalendar();
+  }, [value]);
+
+  const onPreviousClick = () => {
+    setValue(value.clone().subtract(1, "month"));
+  };
+  const onNextClick = () => {
+    setValue(value.clone().add(1, "month"));
+  };
+
+  const setUpCalendar = () => {
+    const tempCalendar = [];
+    while (day.isBefore(endDay, "day")) {
+      tempCalendar.push(
+        Array(7)
+          .fill(0)
+          .map(() => day.add(1, "day").clone())
+      );
+    }
+    setCalendar(tempCalendar);
+  };
   return (
-    <CalendarContext.Provider value={{ data, setData }}>
+    <CalendarContext.Provider
+      value={{ data, setData, calendar, onPreviousClick, onNextClick, value }}
+    >
       {children}
     </CalendarContext.Provider>
   );
