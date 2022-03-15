@@ -1,3 +1,4 @@
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import React from "react";
 
 const CalendarHeaderContainer = ({ children }) => (
@@ -25,9 +26,9 @@ const CalendarHeader = () => {
   return (
     <CalendarHeaderContainer>
       <CalendarHeaderLeft>
-        <p>&LeftArrow;</p>
+        <LeftOutlined />
         <p>February, 2022</p>
-        <p>&RightArrow;</p>
+        <RightOutlined />
       </CalendarHeaderLeft>
       <CalendarHeaderRight>
         <CalendarHeaderRightItem isActive={true}>
