@@ -1,5 +1,6 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import React from "react";
+import React, { useContext } from "react";
+import { CalendarContext } from "../context/CalendarContext";
 
 const CalendarHeaderContainer = ({ children }) => (
   <div className="calendar__header">{children}</div>
@@ -23,12 +24,13 @@ const CalendarHeaderRightItem = ({ children, isActive = false }) => (
 );
 
 const CalendarHeader = () => {
+  const { value, onPreviousClick, onNextClick } = useContext(CalendarContext);
   return (
     <CalendarHeaderContainer>
       <CalendarHeaderLeft>
-        <LeftOutlined />
-        <p>February, 2022</p>
-        <RightOutlined />
+        <LeftOutlined onClick={() => onPreviousClick()} />
+        <p>{value?.format("YYYY, MMMM")}</p>
+        <RightOutlined onClick={() => onNextClick()} />
       </CalendarHeaderLeft>
       <CalendarHeaderRight>
         <CalendarHeaderRightItem isActive={true}>
