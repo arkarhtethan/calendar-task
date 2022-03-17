@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CalendarContext } from "../context/CalendarContext";
 import { ClockCircleOutlined, DeleteOutlined } from "@ant-design/icons";
+import FAB from "./FAB";
 
 const ListGridHeader = ({ value }) => {
   return (
@@ -64,6 +65,7 @@ const ListGrid = () => {
           ))}
         </div>
       </div>
+      <FAB />
     </div>
   );
 };

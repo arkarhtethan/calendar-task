@@ -1,6 +1,7 @@
 import { ClockCircleOutlined } from "@ant-design/icons";
 import React, { useContext } from "react";
 import { CalendarContext } from "../context/CalendarContext";
+import FAB from "./FAB";
 
 const DaysGridContainer = ({ children }) => (
   <div className="days__grid">{children}</div>
@@ -49,6 +50,7 @@ const DaysGridItem = ({ children, hour }) => {
           </div>
         </div>
       )}
+      <FAB />
     </div>
   );
 };

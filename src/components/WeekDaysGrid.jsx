@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../context/CalendarContext";
 import CalendarHeaderRow from "./CalendarHeaderRow";
+import FAB from "./FAB";
 
 const WeeksGridContainer = ({ children }) => (
   <div className="weeks__grid">{children}</div>
@@ -91,7 +92,7 @@ const WeekDaysGrid = () => {
               </>
             ))}
         </WeeksGridBody>
-        {/* <FAB /> */}
+        <FAB />
       </WeeksGridContainer>
     </>
   );
