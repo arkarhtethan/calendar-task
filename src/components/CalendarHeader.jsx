@@ -13,10 +13,11 @@ const CalendarHeaderLeft = ({ children }) => (
 const CalendarHeaderRight = ({ children }) => (
   <div className="calendar__header--right">{children}</div>
 );
-const CalendarHeaderRightItem = ({ children, isActive = false }) => (
+const CalendarHeaderRightItem = ({ children, isActive = false, ...rest }) => (
   <div
+    {...rest}
     className={`calendar__header--right__item ${
-      isActive && "calendar__header--right__item-active"
+      isActive ? "calendar__header--right__item-active" : ""
     }`}
   >
     {children}
@@ -24,7 +25,8 @@ const CalendarHeaderRightItem = ({ children, isActive = false }) => (
 );
 
 const CalendarHeader = () => {
-  const { value, onPreviousClick, onNextClick } = useContext(CalendarContext);
+  const { value, onPreviousClick, onNextClick, setGridType, gridType } =
+    useContext(CalendarContext);
   return (
     <CalendarHeaderContainer>
       <CalendarHeaderLeft>
@@ -33,16 +35,31 @@ const CalendarHeader = () => {
         <RightOutlined onClick={() => onNextClick()} />
       </CalendarHeaderLeft>
       <CalendarHeaderRight>
-        <CalendarHeaderRightItem isActive={true}>
+        <CalendarHeaderRightItem
+          isActive={gridType === "month"}
+          onClick={() => setGridType("month")}
+        >
           <p>Month</p>
         </CalendarHeaderRightItem>
-        <CalendarHeaderRightItem className="calendar__header--right__item">
+        <CalendarHeaderRightItem
+          isActive={gridType === "week"}
+          className="calendar__header--right__item"
+          onClick={() => setGridType("week")}
+        >
           <p>Week</p>
         </CalendarHeaderRightItem>
-        <CalendarHeaderRightItem className="calendar__header--right__item">
+        <CalendarHeaderRightItem
+          isActive={gridType === "day"}
+          className="calendar__header--right__item"
+          onClick={() => setGridType("day")}
+        >
           <p>Day</p>
         </CalendarHeaderRightItem>
-        <CalendarHeaderRightItem className="calendar__header--right__item">
+        <CalendarHeaderRightItem
+          isActive={gridType === "list"}
+          className="calendar__header--right__item"
+          onClick={() => setGridType("list")}
+        >
           <p>List</p>
         </CalendarHeaderRightItem>
       </CalendarHeaderRight>
