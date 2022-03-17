@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../context/CalendarContext";
 
 const CalendarCell = ({ day }) => {
-  const [className, setClassName] = useState(["days__grid--item"]);
+  const [className, setClassName] = useState(["months__grid--item"]);
   const [notes, setNotes] = useState([]);
   const { data } = useContext(CalendarContext);
 
