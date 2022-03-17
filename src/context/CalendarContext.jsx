@@ -7,7 +7,7 @@ const CalendarContextProvider = ({ children }) => {
   const [data, setData] = useState({
     "28/2/2022": { classes: "bg-white" },
     "1/3/2022": { classes: "bg-white", notes: ["Labour Day"] },
-    "2/3/2022": { classes: "bg-white", notes: ["Summer Break", "p1,p2,p3"] },
+    "17/3/2022": { classes: "bg-white", notes: ["Summer Break", "p1,p2,p3"] },
     "3/3/2022": { classes: "bg-white" },
     "4/3/2022": { classes: "bg-white" },
     "2/4/2022": { classes: "bg-white" },
