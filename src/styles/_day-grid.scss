@@ -1,0 +1,34 @@
+.days {
+  &__grid {
+    &--body {
+      margin-bottom: 24px;
+    }
+    &--header {
+      background-color: rgb(234, 243, 254);
+      padding: 15px 0px;
+      text-align: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+    &--item {
+      min-height: 46px;
+      min-width: 84px;
+      border-bottom: 1px solid #b3bcd2;
+      border-left: 1px solid #b3bcd2;
+      &__text {
+        text-align: center;
+        position: relative;
+        padding: 15px;
+
+        &-event {
+          min-height: 26px;
+          min-width: 84px;
+        }
+        &-hour {
+          position: absolute;
+          left: 200px;
+        }
+      }
+    }
+  }
+}

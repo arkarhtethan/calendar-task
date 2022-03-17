@@ -1,0 +1,39 @@
+.weeks {
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    &-header {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background-color: #fbfdff;
+    }
+    &--body {
+      width: 100%;
+      &-item {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        &__text {
+          position: relative;
+          border: 1px solid #b3bcd2;
+          text-align: center;
+          padding: 15px;
+
+          &-event {
+            min-height: 26px;
+            min-width: 84px;
+          }
+          &-hour {
+            position: absolute;
+            left: -54px;
+          }
+        }
+      }
+    }
+    &-cell {
+      text-align: center;
+    }
+  }
+}
+//

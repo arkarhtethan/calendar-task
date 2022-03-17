@@ -1,0 +1,81 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+.add_button {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  background-color: #405de0;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-blue {
+  background-color: #edf4fe;
+}
+.bg-light-blue {
+  background-color: #edf4fe;
+}
+.bg-dark-blue {
+  background-color: #b4d1f8;
+}
+
+.weeks__grid {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+.font-bold {
+  font-weight: bold;
+}
+
+.header-1 {
+  font-size: 20px;
+}
+
+.p-md {
+  padding: 8px;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-green {
+  background-color: lime;
+}
+
+.aic {
+  align-items: center;
+}
