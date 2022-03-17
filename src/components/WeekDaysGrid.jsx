@@ -22,16 +22,29 @@ const WeeksGridItem = ({ children }) => (
   <div className="weeks__grid--body-item">{children}</div>
 );
 
-const WeeksGridItemText = ({ children, rowIndex, show }) => (
-  <div className="weeks__grid--body-item__text">
-    {show && (
-      <p className="weeks__grid--body-item__text-hour">
-        {rowIndex === 0 ? "All Day" : `${rowIndex} : 00`}
-      </p>
-    )}
-    <p className="weeks__grid--body-item__text-event">{}</p>
-  </div>
-);
+const WeeksGridItemText = ({ hour, show, day }) => {
+  const { data } = useContext(CalendarContext);
+  const extractedData = data[day?.format("D/M/YYYY")];
+  const noteTime = false;
+  const notes = extractedData && extractedData.notes ? extractedData.notes : [];
+  return (
+    <div className="weeks__grid--body-item__text">
+      {show && (
+        <p className="weeks__grid--body-item__text-hour">
+          {hour === 0 ? "All Day" : `${hour} : 00`}
+        </p>
+      )}
+      {notes && !noteTime && hour === 0 && extractedData && (
+        <div className="weeks__grid--body-item__text-event">
+          {notes &&
+            !noteTime &&
+            hour === 0 &&
+            notes?.map((note) => <p style={{ fontSize: "12px" }}>{note}</p>)}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const WeekDaysGrid = () => {
   const [days, setDays] = useState([]);
@@ -66,13 +79,14 @@ const WeekDaysGrid = () => {
             .map((_, index) => (
               <>
                 <WeeksGridItem>
-                  {Array(7)
-                    .fill(0)
-                    .map((_, ii) => (
-                      <WeeksGridItemText show={ii === 0} rowIndex={index}>
-                        {ii}
-                      </WeeksGridItemText>
-                    ))}
+                  {days.map((day, ii) => (
+                    <WeeksGridItemText
+                      key={`${ii}-${index}`}
+                      show={ii === 0}
+                      hour={index}
+                      day={day}
+                    />
+                  ))}
                 </WeeksGridItem>
               </>
             ))}
