@@ -18,6 +18,7 @@ const CalendarContextProvider = ({ children }) => {
   });
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
+  const [gridType, setGridType] = useState("month");
 
   useEffect(() => {
     const setUpCalendar = () => {
@@ -46,7 +47,16 @@ const CalendarContextProvider = ({ children }) => {
 
   return (
     <CalendarContext.Provider
-      value={{ data, setData, calendar, onPreviousClick, onNextClick, value }}
+      value={{
+        data,
+        setData,
+        calendar,
+        onPreviousClick,
+        onNextClick,
+        value,
+        gridType,
+        setGridType,
+      }}
     >
       {children}
     </CalendarContext.Provider>
