@@ -19,10 +19,12 @@
           border: 1px solid #b3bcd2;
           text-align: center;
           padding: 15px;
+          min-height: 26px;
+          min-width: 84px;
 
           &-event {
-            min-height: 26px;
-            min-width: 84px;
+            background-color: #d2e4fc;
+            border-radius: 5px;
           }
           &-hour {
             position: absolute;
