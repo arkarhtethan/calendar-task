@@ -63,21 +63,23 @@ const DaysGridItem = ({ children, hour }) => {
 const DayGrid = () => {
   const { value } = useContext(CalendarContext);
   return (
-    <DaysGridContainer>
-      <DaysGridHeader>
-        <p>{value?.format("dddd DD, MMMM YYYY")}</p>
-      </DaysGridHeader>
-      <DaysGridBody>
-        {Array(25)
-          .fill(0)
-          .map((_, index) => (
-            <DaysGridItem key={index} hour={index}>
-              {}
-            </DaysGridItem>
-          ))}
-        <FAB />
-      </DaysGridBody>
-    </DaysGridContainer>
+    <>
+      <DaysGridContainer>
+        <DaysGridHeader>
+          <p>{value?.format("dddd DD, MMMM YYYY")}</p>
+        </DaysGridHeader>
+        <DaysGridBody>
+          {Array(25)
+            .fill(0)
+            .map((_, index) => (
+              <DaysGridItem key={index} hour={index}>
+                {}
+              </DaysGridItem>
+            ))}
+        </DaysGridBody>
+      </DaysGridContainer>
+      <FAB />
+    </>
   );
 };
 

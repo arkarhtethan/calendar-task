@@ -53,17 +53,19 @@ const ListGrid = () => {
     },
   ];
   return (
-    <div className="list">
-      <ListGridHeader value={value} />
-      <div className="list__items--container ">
-        <div className="list__items">
-          {mockedData.map((data) => (
-            <ListGridItem item={data} />
-          ))}
-          <FAB />
+    <>
+      <div className="list">
+        <ListGridHeader value={value} />
+        <div className="list__items--container ">
+          <div className="list__items">
+            {mockedData.map((data) => (
+              <ListGridItem item={data} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <FAB />
+    </>
   );
 };
 
