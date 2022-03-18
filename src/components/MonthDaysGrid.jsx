@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CalendarContext } from "../context/CalendarContext";
 import CalendarCell from "./CalendarCell";
 import CalendarHeaderRow from "./CalendarHeaderRow";
-import FAB from "./FAB";
+// import FAB from "./FAB";
 
 const DaysGridContainer = ({ children }) => (
   <div className="months__grid">{children}</div>
@@ -20,7 +20,7 @@ const MonthDaysGrid = () => {
           ))
         )}
       </DaysGridContainer>
-      <FAB />
+      {/* <FAB /> */}
     </>
   );
 };
