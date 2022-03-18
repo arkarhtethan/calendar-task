@@ -19,8 +19,8 @@ const MonthDaysGrid = () => {
             <CalendarCell key={day.format("DD/MMMM/YYYY")} day={day} />
           ))
         )}
+        <FAB />
       </DaysGridContainer>
-      <FAB />
     </>
   );
 };
