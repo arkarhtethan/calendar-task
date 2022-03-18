@@ -25,32 +25,37 @@ const DaysGridItem = ({ children, hour }) => {
       <p className="days__grid--item__text-hour">
         {hour === 0 ? "All Day" : `${hour} : 00`}
       </p>
-      {notes && !noteTime && hour === 0 && (
-        <div className="days__grid--item__text-event flex jcsb aic">
-          <div>
-            <div className="flex">
-              {notes &&
-                !noteTime &&
-                hour === 0 &&
-                notes?.map((note) => (
-                  <p style={{ fontSize: "12px" }}>{note}</p>
-                ))}
+      <div
+        className={`days__grid--item__text-event flex jcsb aic ${
+          notes && !noteTime && hour === 0 && "bg-blue-1"
+        }`}
+      >
+        {notes && !noteTime && hour === 0 && (
+          <>
+            <div>
+              <div className="flex">
+                {notes &&
+                  !noteTime &&
+                  hour === 0 &&
+                  notes?.map((note) => (
+                    <p style={{ fontSize: "12px" }}>{note}</p>
+                  ))}
+              </div>
+              <div className="flex aic jcc">
+                <p className="list__item--date-icon">
+                  <ClockCircleOutlined />
+                </p>
+                <p className="list__item--date-text">
+                  {value.format("dddd , D MMMM , YYYY")}
+                </p>
+              </div>
             </div>
-            <div className="flex aic jcc">
-              <p className="list__item--date-icon">
-                <ClockCircleOutlined />
-              </p>
-              <p className="list__item--date-text">
-                {value.format("dddd , D MMMM , YYYY")}
-              </p>
+            <div>
+              <p style={{ fontSize: "12px" }}> All Day</p>
             </div>
-          </div>
-          <div>
-            <p style={{ fontSize: "12px" }}> All Day</p>
-          </div>
-        </div>
-      )}
-      <FAB />
+          </>
+        )}
+      </div>
     </div>
   );
 };
@@ -70,6 +75,7 @@ const DayGrid = () => {
               {}
             </DaysGridItem>
           ))}
+        <FAB />
       </DaysGridBody>
     </DaysGridContainer>
   );
