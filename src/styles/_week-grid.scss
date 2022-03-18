@@ -2,7 +2,7 @@
   &__grid {
     position: relative;
     &::-webkit-scrollbar {
-      width: 8px;
+      width: 8rem;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -12,18 +12,13 @@
     &::-webkit-scrollbar-track {
       background-color: #f1f1f1;
     }
-    // height: 72vh;
-    // overflow: scroll;
     display: flex;
     flex-direction: column;
-    // margin-bottom: 12px;
-    // width: 100%;
-    // padding-right: 3px;
-    // overflow-x: hid  den;
     &-header {
-      height: 50px;
+      height: 5rem;
       width: 60%;
       margin: auto;
+
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       background-color: #fbfdff;
@@ -33,30 +28,34 @@
       width: 70%;
       height: 70vh;
       left: 11vw;
-      top: 50px;
+      top: 5rem;
       overflow-y: scroll;
       &-item {
         margin: auto;
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         &__text {
+          &-hour {
+            font-size: 1.6rem;
+          }
           &:not(:first-child) {
             border: 1px solid #b3bcd2;
             text-align: center;
-            padding: 15px;
-            min-width: 84px;
-            min-height: 26px;
+            padding: 1.5rem;
+            min-width: 8.4rem;
+            min-height: 2.6rem;
           }
           &-event {
             background-color: #d2e4fc;
-            border-radius: 5px;
+            border-radius: 5rem;
+            font-size: 1.2rem;
           }
         }
       }
     }
     &-cell {
       text-align: center;
+      font-size: 1.6rem;
     }
   }
 }
-//

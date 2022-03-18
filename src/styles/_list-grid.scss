@@ -4,15 +4,15 @@
   &__grid {
     &-header {
       background-color: #eaf3fe;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
     }
   }
   &__item {
-    padding: 10px 20px;
-    margin-right: 10px;
-    margin-bottom: 15px;
-    border-radius: 10px;
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
     border: 1px solid rgba(146, 146, 146, 0.15);
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.15);
@@ -24,22 +24,28 @@
     &-delIcon {
       transition: all 0.3s ease-in-out;
       opacity: 0;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     &--date {
       color: #8a8e92;
       &-icon {
-        margin-right: 8px;
-        font-size: 12px;
+        margin-right: 0.8rem;
+        font-size: 1.5rem;
+        cursor: pointer;
       }
       &-text {
         font-size: 13px;
       }
     }
     &-category {
-      font-size: 15px;
-      margin-left: 12px;
+      font-size: 1.5rem;
+      margin-left: 1.2rem;
       color: #8a8e92;
+    }
+    &-title {
+      font-size: 1.8rem;
     }
     &-badge {
       width: 7px;
@@ -48,7 +54,7 @@
     }
   }
   &__items {
-    margin: 20px 0;
+    margin: 2rem 0;
     border-right: 1px solid rgb(185, 185, 185);
     position: relative;
     height: 70vh;

@@ -18,36 +18,38 @@
       height: 75vh;
       overflow-y: scroll;
       margin: auto;
-      margin-bottom: 24px;
+      margin-bottom: 2.4rem;
       display: grid;
     }
     &--header {
       width: 60%;
       margin: auto;
+      font-size: 1.4rem;
       background-color: rgb(234, 243, 254);
-      padding: 15px 0px;
+      padding: 1.5rem 0px;
       text-align: center;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
     }
     &--item {
-      margin-top: 2px;
+      margin-top: 0.2px;
       display: flex;
       &__text {
         text-align: center;
-        padding: 15px;
+        padding: 1.5rem;
         &-event {
-          min-height: 46px;
+          min-height: 4.6rem;
           width: 100%;
           border-bottom: 1px solid #b3bcd2;
           border-left: 1px solid #b3bcd2;
-          border-radius: 5px;
-          padding: 5px 20px;
-          min-height: 26px;
-          min-width: 84px;
+          border-radius: 0.5rem;
+          padding: 0.5rem 2rem;
+          min-height: 2.6rem;
+          min-width: 8.4rem;
         }
         &-hour {
-          min-width: 118px;
+          font-size: 1.6rem;
+          min-width: 11.8rem;
         }
       }
     }

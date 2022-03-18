@@ -40,12 +40,14 @@ const ListGrid = () => {
   const { value } = useContext(CalendarContext);
   const mockedData = [
     {
+      id: 1,
       date: value,
       title: "New Year's Day",
       category: "Public Holiday",
       badgeColor: "red",
     },
     {
+      id: 2,
       date: value,
       title: "New Year's Day",
       category: "Public Holiday",
@@ -59,7 +61,7 @@ const ListGrid = () => {
         <div className="list__items--container ">
           <div className="list__items">
             {mockedData.map((data) => (
-              <ListGridItem item={data} />
+              <ListGridItem item={data} key={data.id} />
             ))}
           </div>
         </div>

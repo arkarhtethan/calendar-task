@@ -11,19 +11,19 @@
       background-color: #e6f0fd;
       border-radius: 2px;
       color: #9a9ebb;
-      padding: 5px;
+      padding: 0.5rem;
       &__item {
         cursor: pointer;
-        border-radius: 3px;
+        border-radius: 0.3rem;
         text-align: center;
-        width: 75px;
+        width: 7.5rem;
         position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         & > p {
-          font-size: 14px;
+          font-size: 1.4rem;
           margin: 0;
           width: 100%;
         }
@@ -31,12 +31,12 @@
         &:not(:last-child)::after {
           content: "";
           display: block;
-          width: 2px;
-          height: 20px;
+          width: 0.2rem;
+          height: 2rem;
           border-right: 2px solid grey;
         }
         &::after {
-          transform: translateX(10px);
+          transform: translateX(1rem);
         }
       }
 
@@ -54,10 +54,11 @@
       }
     }
     &--left {
+      font-size: 2rem;
       display: flex;
       align-items: center;
       & > p {
-        margin: 0px 20px;
+        margin: 0px 2rem;
       }
       & > :not(p) {
         cursor: pointer;
@@ -65,17 +66,18 @@
     }
   }
   &__main {
-    margin-top: 20px;
+    margin-top: 2rem;
   }
   &__row--header {
     background-color: #eaf3fe;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
     display: grid;
     width: 60%;
     margin: auto;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
-    padding: 10px 0;
+    padding: 1rem 0;
+    font-size: 1.6rem;
   }
 }
