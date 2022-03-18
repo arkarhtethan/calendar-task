@@ -16,7 +16,7 @@ const WeeksGridHeader = ({ children }) => (
 );
 
 const WeeksGridBody = ({ children }) => (
-  <div className="weeks__grid-body">{children}</div>
+  <div className="weeks__grid--body">{children}</div>
 );
 
 const WeeksGridItem = ({ children }) => (
@@ -35,14 +35,16 @@ const WeeksGridItemText = ({ hour, show, day }) => {
           {hour === 0 ? "All Day" : `${hour} : 00`}
         </p>
       )}
-      {notes && !noteTime && hour === 0 && extractedData && (
-        <div className="weeks__grid--body-item__text-event">
-          {notes &&
-            !noteTime &&
-            hour === 0 &&
-            notes?.map((note) => <p style={{ fontSize: "12px" }}>{note}</p>)}
-        </div>
-      )}
+      <div className="weeks__grid--body-item__text-event">
+        {notes && !noteTime && hour === 0 && extractedData && (
+          <>
+            {notes &&
+              !noteTime &&
+              hour === 0 &&
+              notes?.map((note) => <p style={{ fontSize: "12px" }}>{note}</p>)}
+          </>
+        )}
+      </div>
     </div>
   );
 };
@@ -66,7 +68,7 @@ const WeekDaysGrid = () => {
   }, [value]);
 
   return (
-    <>
+    <div className="week">
       <CalendarHeaderRow />
       <WeeksGridContainer>
         <WeeksGridHeader>
@@ -80,10 +82,16 @@ const WeekDaysGrid = () => {
             .map((_, index) => (
               <>
                 <WeeksGridItem>
+                  <WeeksGridItemText
+                    key={`-${index}`}
+                    show={true}
+                    hour={index}
+                    day={days[0]}
+                  />
                   {days.map((day, ii) => (
                     <WeeksGridItemText
                       key={`${ii}-${index}`}
-                      show={ii === 0}
+                      show={false}
                       hour={index}
                       day={day}
                     />
@@ -91,10 +99,10 @@ const WeekDaysGrid = () => {
                 </WeeksGridItem>
               </>
             ))}
+          <FAB />
         </WeeksGridBody>
-        <FAB />
       </WeeksGridContainer>
-    </>
+    </div>
   );
 };
 
