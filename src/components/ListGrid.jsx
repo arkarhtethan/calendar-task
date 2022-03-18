@@ -5,10 +5,7 @@ import FAB from "./FAB";
 
 const ListGridHeader = ({ value }) => {
   return (
-    <div
-      className="flex jcc list__grid-header"
-      style={{ "background-color": " #eaf3fe" }}
-    >
+    <div className="flex jcc list__grid-header">
       <p className="header-1 font-bold p-md">{value.format("MMMM, YYYY")}</p>
     </div>
   );
@@ -63,9 +60,9 @@ const ListGrid = () => {
           {mockedData.map((data) => (
             <ListGridItem item={data} />
           ))}
+          <FAB />
         </div>
       </div>
-      <FAB />
     </div>
   );
 };
