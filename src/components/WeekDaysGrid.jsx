@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../context/CalendarContext";
 import useMounted from "../hooks/useMounted";
 import CalendarHeaderRow from "./CalendarHeaderRow";
-// import FAB from "./FAB";
 
 const WeeksGridContainer = ({ children }) => (
   <div className="weeks__grid">{children}</div>
@@ -55,21 +54,27 @@ const WeekDaysGrid = () => {
   const isMounted = useMounted();
   const { value } = useContext(CalendarContext);
 
+  const setUpCalendar = useCallback(() => {
+    const startDay = value.clone().startOf("week");
+    const endDay = value.clone().endOf("week");
+    const day = startDay.clone().subtract(1, "day");
+    const tempDays = [];
+    while (day.isBefore(endDay, "day")) {
+      if (!isMounted) {
+        break;
+      }
+      tempDays.push(day.add(1, "day").clone());
+    }
+    if (isMounted) {
+      setDays(tempDays);
+    }
+  }, [value,isMounted]);
+
   useEffect(() => {
-    const setUpCalendar = () => {
-      const startDay = value.clone().startOf("week");
-      const endDay = value.clone().endOf("week");
-      const day = startDay.clone().subtract(1, "day");
-      const tempDays = [];
-      while (day.isBefore(endDay, "day")) {
-        tempDays.push(day.add(1, "day").clone());
-      }
-      if (isMounted) {
-        setDays(tempDays);
-      }
-    };
-    setUpCalendar();
-  }, [value, isMounted]);
+    if (isMounted) {
+      setUpCalendar();
+    }
+  }, [value, isMounted, setUpCalendar]);
 
   return (
     <>

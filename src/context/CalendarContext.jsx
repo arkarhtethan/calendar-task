@@ -30,7 +30,7 @@ const CalendarContextProvider = ({ children }) => {
     const tempCalendar = [];
     while (day.isBefore(endDay, "day")) {
       if (!isMounted) {
-        return;
+        break;
       }
       tempCalendar.push(
         Array(7)
@@ -41,12 +41,14 @@ const CalendarContextProvider = ({ children }) => {
     if (isMounted) {
       setCalendar(tempCalendar);
     }
-  }, [isMounted, value]);
+  }, [value, isMounted]);
 
   useEffect(() => {
-    setUpCalendar();
+    if (isMounted) {
+      setUpCalendar();
+    }
     return () => {};
-  }, []);
+  }, [value, isMounted, setUpCalendar]);
 
   const onPreviousClick = () => {
     setValue(value.clone().subtract(1, "month"));
