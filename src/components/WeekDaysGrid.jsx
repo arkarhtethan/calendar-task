@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CalendarContext } from "../context/CalendarContext";
+import useMounted from "../hooks/useMounted";
 import CalendarHeaderRow from "./CalendarHeaderRow";
 // import FAB from "./FAB";
 
@@ -51,6 +52,7 @@ const WeeksGridItemText = ({ hour, show, day }) => {
 
 const WeekDaysGrid = () => {
   const [days, setDays] = useState([]);
+  const isMounted = useMounted();
   const { value } = useContext(CalendarContext);
 
   useEffect(() => {
@@ -62,10 +64,12 @@ const WeekDaysGrid = () => {
       while (day.isBefore(endDay, "day")) {
         tempDays.push(day.add(1, "day").clone());
       }
-      setDays(tempDays);
+      if (isMounted) {
+        setDays(tempDays);
+      }
     };
     setUpCalendar();
-  }, [value]);
+  }, [value, isMounted]);
 
   return (
     <>
@@ -74,7 +78,7 @@ const WeekDaysGrid = () => {
         <WeeksGridContainer>
           <WeeksGridHeader>
             {days.map((day) => (
-              <WeekCell day={day} />
+              <WeekCell key={day} day={day} />
             ))}
           </WeeksGridHeader>
           <WeeksGridBody>

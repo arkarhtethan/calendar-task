@@ -1,9 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import moment from "moment";
+import useMounted from "../hooks/useMounted";
 
 export const CalendarContext = createContext();
 
 const CalendarContextProvider = ({ children }) => {
+  const isMounted = useMounted();
+
   const [data, setData] = useState({
     "28/2/2022": { classes: "bg-white" },
     "1/3/2022": { classes: "bg-white", notes: ["Labour Day"] },
@@ -33,10 +36,12 @@ const CalendarContextProvider = ({ children }) => {
             .map(() => day.add(1, "day").clone())
         );
       }
-      setCalendar(tempCalendar);
+      if (isMounted) {
+        setCalendar(tempCalendar);
+      }
     };
     setUpCalendar();
-  }, [value]);
+  }, [value, isMounted]);
 
   const onPreviousClick = () => {
     setValue(value.clone().subtract(1, "month"));
