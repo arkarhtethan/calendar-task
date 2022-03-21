@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useEffect, useState } from "react";
 import moment from "moment";
 import useMounted from "../hooks/useMounted";
 
@@ -23,25 +23,27 @@ const CalendarContextProvider = ({ children }) => {
   const [value, setValue] = useState(moment());
   const [gridType, setGridType] = useState("month");
 
+  const setUpCalendar = useCallback(() => {
+    const startDay = value.clone().startOf("month").startOf("week");
+    const endDay = value.clone().endOf("month").endOf("week");
+    const day = startDay.clone().subtract(1, "day");
+    const tempCalendar = [];
+    while (day.isBefore(endDay, "day")) {
+      tempCalendar.push(
+        Array(7)
+          .fill(0)
+          .map(() => day.add(1, "day").clone())
+      );
+    }
+    if (isMounted) {
+      setCalendar(tempCalendar);
+    }
+  }, [isMounted, value]);
+
   useEffect(() => {
-    const setUpCalendar = () => {
-      const startDay = value.clone().startOf("month").startOf("week");
-      const endDay = value.clone().endOf("month").endOf("week");
-      const day = startDay.clone().subtract(1, "day");
-      const tempCalendar = [];
-      while (day.isBefore(endDay, "day")) {
-        tempCalendar.push(
-          Array(7)
-            .fill(0)
-            .map(() => day.add(1, "day").clone())
-        );
-      }
-      if (isMounted) {
-        setCalendar(tempCalendar);
-      }
-    };
     setUpCalendar();
-  }, [value, isMounted]);
+    return () => {};
+  }, []);
 
   const onPreviousClick = () => {
     setValue(value.clone().subtract(1, "month"));
