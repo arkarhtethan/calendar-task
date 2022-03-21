@@ -29,6 +29,9 @@ const CalendarContextProvider = ({ children }) => {
     const day = startDay.clone().subtract(1, "day");
     const tempCalendar = [];
     while (day.isBefore(endDay, "day")) {
+      if (!isMounted) {
+        return;
+      }
       tempCalendar.push(
         Array(7)
           .fill(0)
