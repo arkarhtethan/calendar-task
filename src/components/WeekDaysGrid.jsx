@@ -85,24 +85,22 @@ const WeekDaysGrid = () => {
             {Array(25)
               .fill(0)
               .map((_, index) => (
-                <>
-                  <WeeksGridItem>
+                <WeeksGridItem key={`-${index}`}>
+                  <WeeksGridItemText
+                    key={`-${index}`}
+                    show={true}
+                    hour={index}
+                    day={days[0]}
+                  />
+                  {days.map((day, ii) => (
                     <WeeksGridItemText
-                      key={`-${index}`}
-                      show={true}
+                      key={`${ii}-${index}`}
+                      show={false}
                       hour={index}
-                      day={days[0]}
+                      day={day}
                     />
-                    {days.map((day, ii) => (
-                      <WeeksGridItemText
-                        key={`${ii}-${index}`}
-                        show={false}
-                        hour={index}
-                        day={day}
-                      />
-                    ))}
-                  </WeeksGridItem>
-                </>
+                  ))}
+                </WeeksGridItem>
               ))}
           </WeeksGridBody>
         </WeeksGridContainer>
